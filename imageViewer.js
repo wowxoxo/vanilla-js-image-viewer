@@ -13,4 +13,10 @@ document.addEventListener('DOMContentLoaded', function() {
         viewer.style.display = 'none';
         viewerImage.src = '';
     });
+
+    viewer.addEventListener('touchstart', function(event) {
+        event.preventDefault();
+        viewer.style.display = 'none';
+        viewerImage.src = '';
+    });
 });
