@@ -6,19 +6,28 @@ document.addEventListener('DOMContentLoaded', function() {
     document.querySelectorAll('.viewable-image').forEach(img => {
         img.addEventListener('click', function() {
             viewerImage.src = this.src;
-            viewer.classList.add('active');
+            viewer.style.display = 'flex';
+            setTimeout(() => {
+                viewer.classList.add('active');
+            }, 10); // Small delay to ensure the image is loaded before animating
         });
     });
 
     closeButton.addEventListener('click', function() {
         viewer.classList.remove('active');
-        viewerImage.src = '';
+        setTimeout(() => {
+            viewer.style.display = 'none';
+            viewerImage.src = '';
+        }, 300); // Match the transition duration
     });
 
     viewer.addEventListener('click', function(event) {
         if (event.target === viewer) {
             viewer.classList.remove('active');
-            viewerImage.src = '';
+            setTimeout(() => {
+                viewer.style.display = 'none';
+                viewerImage.src = '';
+            }, 300); // Match the transition duration
         }
     });
 
@@ -26,7 +35,10 @@ document.addEventListener('DOMContentLoaded', function() {
         if (event.target === viewer) {
             event.preventDefault();
             viewer.classList.remove('active');
-            viewerImage.src = '';
+            setTimeout(() => {
+                viewer.style.display = 'none';
+                viewerImage.src = '';
+            }, 300); // Match the transition duration
         }
     });
 });
